@@ -18,7 +18,7 @@ public class AppTest {
 
     public static void tempo(long delay) {
         try {
-            Thread.sleep(delay);
+            driver.wait(delay);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -47,12 +47,22 @@ public class AppTest {
 
         //List<WebElement> interventionFound = (List<WebElement>) interventions.stream() .filter(we -> we.getText().contains(title)) .collect(Collectors.toList());
 
-        WebElement image = driver.findElement(By.xpath("//img[@alt=\'Fork me on GitHub\']"));
+        WebElement image = driver.findElement(By.xpath("//img[@alt='Fork me on GitHub']"));
         image.click();
         AppTest.tempo(3000);
         driver.quit();
 
     }
 
+    @Test
+    public void testDropDown() {
+        driver.get("http://the-internet.herokuapp.com/");
+        driver.findElement(By.linkText("Dropdown")).click();
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+        dropdown.findElement(By.xpath("//option[. = 'Option 2']")).click();
+        //Check if selected element in the list is 'Option 2'
+        Assert.assertEquals("Option 2", dropdown.findElement(By.xpath("//option [@selected='selected']")).getText() );
+        AppTest.tempo(3000);
+    }
 
 }
