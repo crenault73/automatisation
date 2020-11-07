@@ -52,7 +52,7 @@ public class AppTest {
             System.out.println(we.getText());
         }
 
-        List<WebElement> filteredElements = (List<WebElement>) list.stream() .filter(we -> we.getText().contains("Controls")) .collect(Collectors.toList());
+        List<WebElement> filteredElements = (List<WebElement>) list.stream().filter(we -> we.getText().contains("Controls")).collect(Collectors.toList());
 
         for (WebElement we : filteredElements) {
             System.out.println(we.getText());
@@ -71,7 +71,20 @@ public class AppTest {
         WebElement dropdown = driver.findElement(By.id("dropdown"));
         dropdown.findElement(By.xpath("//option[. = 'Option 2']")).click();
         //Check if selected element in the list is 'Option 2'
-        Assert.assertEquals("Option 2", dropdown.findElement(By.xpath("//option [@selected='selected']")).getText() );
+        Assert.assertEquals("Option 2", dropdown.findElement(By.xpath("//option [@selected='selected']")).getText());
+        AppTest.tempo(3000);
+    }
+
+    @Test
+    public void testFormAuthentication() {
+        driver.get("http://the-internet.herokuapp.com/");
+        driver.findElement(By.linkText("Form Authentication")).click();
+        WebElement login = driver.findElement(By.id("username"));
+        login.sendKeys("tomsmith");
+        driver.findElement(By.xpath("//input [@type='password']")).sendKeys("SuperSecretPassword!");
+        driver.findElement(By.xpath("//button [contains(.,'Login')]")).click();
+        WebElement welcome = driver.findElement(By.xpath("//h4 [contains(., 'Welcome')]"));
+        Assert.assertEquals("Welcome to the Secure Area. When you are done click logout below.", welcome.getText());
         AppTest.tempo(3000);
     }
 
