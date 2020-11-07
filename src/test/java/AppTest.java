@@ -3,6 +3,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,7 +20,7 @@ public class AppTest {
 
     public static void tempo(long delay) {
         try {
-            driver.wait(delay);
+            Thread.sleep(delay);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -34,7 +35,6 @@ public class AppTest {
     public void setUp() {
         driver = new FirefoxDriver();
     }
-
 
     @Test
     public void testSite() {
@@ -75,4 +75,45 @@ public class AppTest {
         AppTest.tempo(3000);
     }
 
+    @Test
+    public void testDragAndDrop() {
+        driver.get("http://the-internet.herokuapp.com/");
+        //driver.manage().window().setSize(new Dimension(1848, 1053));
+        AppTest.tempo(1000);
+        driver.findElement(By.linkText("Drag and Drop")).click();
+        AppTest.tempo(1000);
+        {
+            WebElement dragged = driver.findElement(By.id("column-a"));
+            WebElement dropped = driver.findElement(By.id("column-b"));
+            //HTML 5
+            final String java_script = ""
+                    + "var src=arguments[0],tgt=arguments[1];"
+                    + "var dataTransfer={"
+                    + "  dropEffect:'',effectAllowed:'all',files:[],items:{},types:[],"
+                    + "  setData:function(format,data){"
+                    + "    this.items[format]=data;"
+                    + "    this.types.push(format);"
+                    + "  },"
+                    + "  getData:function(format){"
+                    + "    return this.items[format];"
+                    + "  },"
+                    + "  clearData:function(format){}"
+                    + "};"
+                    + "var emit=function(event,target){"
+                    + "  var evt=document.createEvent('Event');"
+                    + "  evt.initEvent(event,true,false);"
+                    + "  evt.dataTransfer=dataTransfer;"
+                    + "  target.dispatchEvent(evt);"
+                    + "};"
+                    + "emit('dragstart',src);"
+                    + "emit('dragenter',tgt);"
+                    + "emit('dragover',tgt);"
+                    + "emit('drop',tgt);"
+                    + "emit('dragend',src);";
+
+            ((JavascriptExecutor) driver).executeScript(java_script, dragged, dropped);
+        }
+        AppTest.tempo(2000);
+
+    }
 }
