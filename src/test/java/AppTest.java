@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -45,12 +46,21 @@ public class AppTest {
 
         List<WebElement> list = driver.findElements(By.xpath("//ul/li/a [contains(@href, 'dynamic')]"));
 
-        //List<WebElement> interventionFound = (List<WebElement>) interventions.stream() .filter(we -> we.getText().contains(title)) .collect(Collectors.toList());
+
+        System.out.println("The list :");
+        for (WebElement we : list) {
+            System.out.println(we.getText());
+        }
+
+        List<WebElement> filteredElements = (List<WebElement>) list.stream() .filter(we -> we.getText().contains("Controls")) .collect(Collectors.toList());
+
+        for (WebElement we : filteredElements) {
+            System.out.println(we.getText());
+        }
 
         WebElement image = driver.findElement(By.xpath("//img[@alt='Fork me on GitHub']"));
         image.click();
         AppTest.tempo(3000);
-        driver.quit();
 
     }
 
