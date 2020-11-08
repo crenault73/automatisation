@@ -1,3 +1,5 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,14 +17,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AppTest {
-
+    private static Logger logger = LogManager.getLogger(AppTest.class);
     public static WebDriver driver;
 
     public static void tempo(long delay) {
         try {
             Thread.sleep(delay);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("Error on sleep: ", e.getMessage());
         }
     }
 
@@ -41,21 +43,21 @@ public class AppTest {
         driver.get("http://the-internet.herokuapp.com/");
         //<h1 class="heading">Welcome to the-internet</h1>
         WebElement title = driver.findElement(By.xpath("//h1"));
-        System.out.println("Contenu de title: " + title.getText());
+        logger.debug("Contenu de title: " + title.getText());
         Assert.assertEquals("Welcome to the-internet", title.getText());
 
         List<WebElement> list = driver.findElements(By.xpath("//ul/li/a [contains(@href, 'dynamic')]"));
 
 
-        System.out.println("The list :");
+        logger.info("The list :");
         for (WebElement we : list) {
-            System.out.println(we.getText());
+            logger.info(we.getText());
         }
 
         List<WebElement> filteredElements = (List<WebElement>) list.stream().filter(we -> we.getText().contains("Controls")).collect(Collectors.toList());
 
         for (WebElement we : filteredElements) {
-            System.out.println(we.getText());
+            logger.debug(we.getText());
         }
 
         WebElement image = driver.findElement(By.xpath("//img[@alt='Fork me on GitHub']"));
