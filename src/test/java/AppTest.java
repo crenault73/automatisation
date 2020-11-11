@@ -62,7 +62,7 @@ public class AppTest {
 
         WebElement image = driver.findElement(By.xpath("//img[@alt='Fork me on GitHub']"));
         image.click();
-        AppTest.tempo(3000);
+        //AppTest.tempo(3000);
 
     }
 
@@ -74,7 +74,7 @@ public class AppTest {
         dropdown.findElement(By.xpath("//option[. = 'Option 2']")).click();
         //Check if selected element in the list is 'Option 2'
         Assert.assertEquals("Option 2", dropdown.findElement(By.xpath("//option [@selected='selected']")).getText());
-        AppTest.tempo(3000);
+        //AppTest.tempo(3000);
     }
 
     @Test
@@ -87,16 +87,16 @@ public class AppTest {
         driver.findElement(By.xpath("//button [contains(.,'Login')]")).click();
         WebElement welcome = driver.findElement(By.xpath("//h4 [contains(., 'Welcome')]"));
         Assert.assertEquals("Welcome to the Secure Area. When you are done click logout below.", welcome.getText());
-        AppTest.tempo(3000);
+        //AppTest.tempo(3000);
     }
 
     @Test
     public void testDragAndDrop() {
         driver.get("http://the-internet.herokuapp.com/");
         //driver.manage().window().setSize(new Dimension(1848, 1053));
-        AppTest.tempo(1000);
+        //AppTest.tempo(1000);
         driver.findElement(By.linkText("Drag and Drop")).click();
-        AppTest.tempo(1000);
+        //AppTest.tempo(1000);
         {
             WebElement dragged = driver.findElement(By.id("column-a"));
             WebElement dropped = driver.findElement(By.id("column-b"));
@@ -128,7 +128,7 @@ public class AppTest {
 
             ((JavascriptExecutor) driver).executeScript(java_script, dragged, dropped);
         }
-        AppTest.tempo(2000);
+        //AppTest.tempo(2000);
 
     }
 }
