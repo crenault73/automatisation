@@ -1,11 +1,9 @@
 # Automatisation
 
-Automatisation de tests
+Prérequis : 
 
-Prérquis : 
+Installer Maven 
 
-Installer Maven
-Installer JDK
-Installer Java
+Commandes utilisées : 
 
-créer un web driver 
+mvn test
