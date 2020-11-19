@@ -1,5 +1,6 @@
 package stepdefs;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import kwd.TestHomeKwd;
@@ -39,4 +40,28 @@ public class TestHome {
         Assert.assertEquals("Welcome to the-internet", api.getTitle());
     }
 
+    @When("^i am on the checkboxes page$")
+    public void iAmOnTheCheckboxesPage() {
+        logger.info("i am on the checkboxes page");
+        api.getPageCheckboxes();
+    }
+
+    @And("^i click on the checkbox (\\d+)$")
+    public void iClickOnTheCheckbox(int num) {
+        logger.info("i click on the checkbox " + num);
+        api.clickoncheckbox(num);
+    }
+
+    @Then("^checkbox (\\d+) is unchecked$")
+    public void checkbox_is_unchecked(int num) {
+        logger.info("checkbox " +num+ " is unchecked");
+        api.verifyCheckboxUnchecked(num);
+
+    }
+
+    @Then("^checkbox (\\d+) is checked$")
+    public void checkboxIsChecked(int num) {
+        logger.info("checkbox " +num+ " is checked");
+        api.checkboxIsChecked(num);
+    }
 }
