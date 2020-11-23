@@ -1,14 +1,15 @@
 package kwd;
 
+import io.qameta.allure.Allure;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.io.ByteArrayInputStream;
 
 public class TestHomeKwd {
     private static Logger logger = LogManager.getLogger(TestHomeKwd.class);
@@ -20,6 +21,7 @@ public class TestHomeKwd {
 
     public void getHome(){
         driver.get("http://the-internet.herokuapp.com");
+        captureScreen("Home page");
     }
 
     public void getPageCheckboxes(){
@@ -46,5 +48,11 @@ public class TestHomeKwd {
         WebElement element = driver.findElement(By.xpath("(//input[@type=\'checkbox\'])["+num+"]"));
         logger.debug(element.getAttribute("checked"));
         Assert.assertEquals("true", element.getAttribute("checked"));
+    }
+
+    public void captureScreen(String title){
+        byte[] screenshotByteArray = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        ByteArrayInputStream imageAsInputStream = new ByteArrayInputStream(screenshotByteArray);
+        Allure.addAttachment(title, "image/png", imageAsInputStream, "png");
     }
 }
