@@ -38,7 +38,7 @@ public class AppTest {
         driver = new FirefoxDriver();
     }
 
-    @Test
+    //S@Test
     public void testSite() {
         driver.get("http://the-internet.herokuapp.com/");
         //<h1 class="heading">Welcome to the-internet</h1>
@@ -66,7 +66,7 @@ public class AppTest {
 
     }
 
-    @Test
+    //@Test
     public void testDropDown() {
         driver.get("http://the-internet.herokuapp.com/");
         driver.findElement(By.linkText("Dropdown")).click();
@@ -77,7 +77,7 @@ public class AppTest {
         //AppTest.tempo(3000);
     }
 
-    @Test
+    //@Test
     public void testFormAuthentication() {
         driver.get("http://the-internet.herokuapp.com/");
         driver.findElement(By.linkText("Form Authentication")).click();
@@ -90,7 +90,7 @@ public class AppTest {
         //AppTest.tempo(3000);
     }
 
-    @Test
+    //@Test
     public void testDragAndDrop() {
         driver.get("http://the-internet.herokuapp.com/");
         //driver.manage().window().setSize(new Dimension(1848, 1053));

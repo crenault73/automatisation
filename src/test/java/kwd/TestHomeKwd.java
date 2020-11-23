@@ -24,8 +24,13 @@ public class TestHomeKwd {
         captureScreen("Home page");
     }
 
-    public void getPageCheckboxes(){
+    public void getCheckboxesPage(){
         driver.get("http://the-internet.herokuapp.com/checkboxes");
+    }
+
+    public void getAuthenticationPage(){
+        driver.get("http://the-internet.herokuapp.com/login");
+        captureScreen("Authentication page");
     }
 
     public String getTitle(){
@@ -54,5 +59,24 @@ public class TestHomeKwd {
         byte[] screenshotByteArray = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         ByteArrayInputStream imageAsInputStream = new ByteArrayInputStream(screenshotByteArray);
         Allure.addAttachment(title, "image/png", imageAsInputStream, "png");
+    }
+
+    public void authenticate(String login, String password) {
+        WebElement inputUsername = driver.findElement(By.id("username"));
+        inputUsername.sendKeys(login);
+        WebElement inputPassword = driver.findElement(By.name("password"));
+        inputPassword.sendKeys(password);
+
+        captureScreen("Authentication");
+
+        WebElement button = driver.findElement(By.xpath("//button [@type='submit' and contains(.,'Login')]"));
+        button.click();
+    }
+
+    public void checkLogged() {
+        captureScreen("Welcome page");
+
+        WebElement welcome = driver.findElement(By.xpath("//h4 [contains(., 'Welcome')]"));
+        Assert.assertEquals("Welcome to the Secure Area. When you are done click logout below.", welcome.getText());
     }
 }
