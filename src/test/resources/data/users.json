@@ -1,0 +1,31 @@
+{
+  "tomsmith": {
+    "firstname": "tom",
+    "lastname": "smith",
+    "login": "tomsmith",
+    "password": "SuperSecretPassword!",
+    "phonenumbers": [
+      "555-777-888",
+      "555-777-999"
+    ]
+  },
+  "ronfloyd": {
+    "firstname": "ron",
+    "lastname": "floyd",
+    "login": "ronfloyd",
+    "password": "wrongPassword!",
+    "phonenumbers": [
+      "444-666-099",
+      "333-098-099"
+    ]
+  },
+  "benSwanson": {
+    "firstname": "ben",
+    "lastname": "swanson",
+    "login": "benSwanson",
+    "password": "wrongPassword*",
+    "phonenumbers": [
+      "111-222-011"
+    ]
+  }
+}
