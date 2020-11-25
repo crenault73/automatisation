@@ -1,5 +1,6 @@
 package stepdefs;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -84,4 +85,9 @@ public class TestHome {
         api.checkLogged();
     }
 
+    @When("^i log with \"([^\"]*)\"$")
+    public void iLogWith(String user){
+        logger.info("i log with '" + user + "'");
+        api.authenticate(user);
+    }
 }

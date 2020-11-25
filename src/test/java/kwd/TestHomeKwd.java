@@ -3,13 +3,17 @@ package kwd;
 import io.qameta.allure.Allure;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.io.ByteArrayInputStream;
+import java.io.*;
+import java.text.ParseException;
 
 public class TestHomeKwd {
     private static Logger logger = LogManager.getLogger(TestHomeKwd.class);
@@ -78,5 +82,34 @@ public class TestHomeKwd {
 
         WebElement welcome = driver.findElement(By.xpath("//h4 [contains(., 'Welcome')]"));
         Assert.assertEquals("Welcome to the Secure Area. When you are done click logout below.", welcome.getText());
+    }
+
+    public void authenticate(String user) {
+        JSONObject users = (JSONObject) getData("users.json", user);
+        JSONObject myUser = (JSONObject) users.get(user);
+        String login = (String) myUser.get("login");
+        String password = (String) myUser.get("password");
+        JSONArray phoneNumbers = (JSONArray) myUser.get("phonenumbers");
+//        for(Object num:phoneNumbers){
+//            logger.debug("phonenumber: "+num.toString());
+//        }
+        phoneNumbers.forEach(value -> logger.debug("phonenumber: "+value.toString()));
+
+        authenticate(login, password);
+    }
+
+    private Object getData(String file, String user) {
+        Object data = null;
+        try {
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("data" + File.separator + file);
+            JSONParser jsonParser = new JSONParser();
+            data = jsonParser.parse(new InputStreamReader(inputStream));
+            logger.debug("json file" + data.toString());
+        }catch(org.json.simple.parser.ParseException pe){
+            logger.debug("error parsing file"+file, pe);
+        }catch (IOException ioe){
+            logger.error("error loading"+file, ioe);
+        }
+        return data;
     }
 }
