@@ -1,5 +1,5 @@
 # Authentication test
-
+@Authentication
 Feature: Authentication tests
 
   Scenario Outline: Test authentication with login and password
@@ -10,10 +10,10 @@ Feature: Authentication tests
     Examples:
       | login    | password |
       | tomsmith | SuperSecretPassword! |
-      | ronfloyd | wrongPassword! |
-      | benSwanson | wrongPassword* |
+#      | ronfloyd | wrongPassword! |
+#      | benSwanson | wrongPassword* |
 
-
+  @json
   Scenario Outline: Test authentication with user
     Given i am on the authentication page
     When i log with "<user>"
@@ -22,5 +22,4 @@ Feature: Authentication tests
     Examples:
       | user       |
       | tomsmith   |
-      | ronfloyd   |
-      | benSwanson |
+#      | benSwanson |

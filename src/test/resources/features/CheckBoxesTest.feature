@@ -1,5 +1,5 @@
 # Checkboxes test
-
+@Checkbox
 Feature: Checkboxes tests
 
   Scenario: Check checkbox 1
