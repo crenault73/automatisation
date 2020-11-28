@@ -1,5 +1,5 @@
 # Smoke test
-@SmokeTests
+@SmokeTest
 Feature: Smoke tests
 
   Scenario: Homepage is visible

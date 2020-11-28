@@ -11,8 +11,10 @@ import kwd.TestHomeKwd;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class TestHome {
     private static Logger logger = LogManager.getLogger(TestHome.class);
@@ -26,7 +28,13 @@ public class TestHome {
 
     @Before()
     public void setUp() {
-        driver = new FirefoxDriver();
+        boolean headless = Boolean.valueOf(System.getProperty("headless", "false"));
+        FirefoxOptions firefox_options = new FirefoxOptions();
+        if (headless) {
+            firefox_options.setHeadless(true);
+        }
+        driver = new FirefoxDriver(firefox_options);
+        //driver.manage().window().setSize(new Dimension(1920,1080));
         api = new TestHomeKwd(driver);
     }
 
@@ -86,7 +94,7 @@ public class TestHome {
     }
 
     @When("^i log with \"([^\"]*)\"$")
-    public void iLogWith(String user){
+    public void iLogWith(String user) {
         logger.info("i log with '" + user + "'");
         api.authenticate(user);
     }
