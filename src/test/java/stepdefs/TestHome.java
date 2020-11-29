@@ -1,6 +1,5 @@
 package stepdefs;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -11,7 +10,6 @@ import kwd.TestHomeKwd;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -20,6 +18,10 @@ public class TestHome {
     private static Logger logger = LogManager.getLogger(TestHome.class);
     private WebDriver driver;
     private TestHomeKwd api;
+
+    public WebDriver getDriver() {
+        return this.driver;
+    }
 
     @After()
     public void tearDown() {
