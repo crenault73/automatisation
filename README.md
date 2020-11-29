@@ -35,13 +35,13 @@ mvn clean;rm -rf allure-re*; mvn package -DskipTests=true
 ```
 Appel de tous les tests
 ```
-java -jar target/maven-simple-1.0-SNAPSHOT-tests.jar
+java -jar target/automatisation-1.0-SNAPSHOT-tests.jar
 ```
 Appel de tous les tests avec le tag @SmokeTest
 ```
-java -jar target/maven-simple-1.0-SNAPSHOT-tests.jar -t @SmokeTest
+java -jar target/automatisation-1.0-SNAPSHOT-tests.jar -t @SmokeTest
 ```
 Appel en mode headless(navigateur non visible) de tous les tests avec le tag @SmokeTest ou @Authentication
 ```
-java -Dheadless=false -jar target/maven-simple-1.0-SNAPSHOT-tests.jar --tags @SmokeTest,@Authentication
+java -Dheadless=false -jar target/automatisation-1.0-SNAPSHOT-tests.jar --tags @SmokeTest,@Authentication
 ```
