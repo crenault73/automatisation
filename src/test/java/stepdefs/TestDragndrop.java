@@ -1,8 +1,8 @@
 package stepdefs;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import kwd.TestDragndropKwd;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,13 +10,13 @@ import org.openqa.selenium.WebDriver;
 
 public class TestDragndrop {
     private static Logger logger = LogManager.getLogger(TestDragndrop.class);
-    private TestHome baseSteps;
+    private BaseSteps baseSteps;
 
     private WebDriver driver;
 
     private TestDragndropKwd api;
 
-    public TestDragndrop(TestHome baseSteps) {
+    public TestDragndrop(BaseSteps baseSteps) {
         this.baseSteps = baseSteps;
         driver = baseSteps.getDriver();
         this.api = new TestDragndropKwd(this.driver);
