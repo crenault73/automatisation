@@ -1,8 +1,8 @@
 package stepdefs;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import kwd.TestCheckBoxesKwd;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,12 +11,12 @@ import org.openqa.selenium.WebDriver;
 public class TestCheckBoxes {
 
     private static Logger logger = LogManager.getLogger(TestCheckBoxes.class);
-    private TestHome baseSteps;
+    private BaseSteps baseSteps;
 
     private WebDriver driver;
     private TestCheckBoxesKwd api;
 
-    public TestCheckBoxes(TestHome baseSteps) {
+    public TestCheckBoxes(BaseSteps baseSteps) {
         this.baseSteps = baseSteps;
         driver = baseSteps.getDriver();
         this.api = new TestCheckBoxesKwd(this.driver);
