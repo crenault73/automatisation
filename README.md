@@ -1,6 +1,6 @@
 # Automatisation
 
-### Prérequis : 
+### Prérequis: 
 
 - Installation Maven
 - Installation allure 
@@ -9,7 +9,6 @@
 # Install allure-commandline #
 # -------------------------- #
 
-
 wget https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.7.0/allure-2.7.0.tgz && \
     tar -zxvf allure-2.7.0.tgz -C /opt/    && \
     ln -s /opt/allure-2.7.0/bin/allure /usr/bin/allure   && \
@@ -17,11 +16,16 @@ wget https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.7.0/allure-
 
 allure --version 
 ```
-### Jar packaging 
+- Environnement \
+Copy .env.template file to .env and complete credentials to access your [LambdaTest](https://accounts.lambdatest.com/) account (RemoteWebDriver)
+```
+source .env
+```
+### Jar packaging:
 ```
 mvn clean;rm -rf allure-re*; mvn package -DskipTests=true
 ```
-### Exécution
+### Exécution:
 ##### Exécution via Maven (exécution en parallèle des tests)
 Appel de tous les tests
 ```
