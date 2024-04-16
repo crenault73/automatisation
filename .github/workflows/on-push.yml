@@ -24,4 +24,4 @@ jobs:
         env:
           LT_USERNAME: ${{ secrets.LT_USERNAME }}
         run: |
-          echo "$LT_USERNAME"
+          echo $LT_USERNAME
