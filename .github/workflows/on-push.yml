@@ -9,5 +9,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: bats install
+        run: npm install -g bats
+      - name: bats version
+        run: bats -v
