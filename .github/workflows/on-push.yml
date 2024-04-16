@@ -22,8 +22,7 @@ jobs:
         run: mvn --batch-mode clean; rm -rf allure-re*; mvn --batch-mode package -DskipTests=true
       - name: Access secret & variable
         env:
-          LT_USERNAME: ${{ secrets.LT_USERNAME }}
+          LT_USERNAME: ${{ vars.LT_USERNAME }}
+          LT_ACCESS_KEY: ${{ secrets.LT_USERNAME }}
         run: |
-          echo $LT_USERNAME;echo $JAVA_HOME
-      - name: Test printing your secret (Remove this step in production)
-        run: cat $HOME/secrets/my_secret.json
+          echo $LT_USERNAME;echo $LT_ACCESS_KEY
