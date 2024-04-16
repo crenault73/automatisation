@@ -20,9 +20,8 @@ jobs:
           distribution: 'temurin'
       - name: Maven Clean & Pagkage
         run: mvn --batch-mode clean; rm -rf allure-re*; mvn --batch-mode package -DskipTests=true
-      - name: Access secret & variable
+      - name: Maven Test
         env:
           LT_USERNAME: ${{ vars.LT_USERNAME }}
           LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
-        run: |
-          echo $LT_USERNAME;echo $LT_ACCESS_KEY
+        run: mvn --batch-mode test
