@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Apr 16 15:04:24 GMT 2024","Tue Apr 16 15:04:54 GMT 2024","30067","","Checkboxes tests","","Check checkbox 1","","Check checkbox 1",""
+"passed","Tue Apr 16 15:04:54 GMT 2024","Tue Apr 16 15:05:13 GMT 2024","19113","","Checkboxes tests","","Uncheck checkbox 2","","Uncheck checkbox 2",""
+"passed","Tue Apr 16 15:04:24 GMT 2024","Tue Apr 16 15:04:55 GMT 2024","31048","","Authentication tests","","Test authentication with login and password","","Test authentication with login and password",""
+"passed","Tue Apr 16 15:04:24 GMT 2024","Tue Apr 16 15:04:34 GMT 2024","10339","","Smoke tests","","Homepage is visible","","Homepage is visible",""
+"passed","Tue Apr 16 15:04:55 GMT 2024","Tue Apr 16 15:05:15 GMT 2024","20072","","Authentication tests","","Test authentication with user","","Test authentication with user",""
+"passed","Tue Apr 16 15:04:24 GMT 2024","Tue Apr 16 15:04:34 GMT 2024","10287","","Drag and drop tests","","Drag and drop element","","Drag and drop element",""
