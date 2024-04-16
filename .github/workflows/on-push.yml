@@ -23,6 +23,6 @@ jobs:
       - name: Access secret & variable
         env:
           LT_USERNAME: ${{ vars.LT_USERNAME }}
-          LT_ACCESS_KEY: ${{ secrets.LT_USERNAME }}
+          LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
         run: |
           echo $LT_USERNAME;echo $LT_ACCESS_KEY
