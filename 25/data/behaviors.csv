@@ -1,0 +1,7 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","Drag and drop tests","Drag and drop element","0","0","1","0","0"
+"","Authentication tests","Test authentication with user","0","0","1","0","0"
+"","Checkboxes tests","Check checkbox 1","0","0","1","0","0"
+"","Smoke tests","Homepage is visible","0","0","1","0","0"
+"","Authentication tests","Test authentication with login and password","0","0","1","0","0"
+"","Checkboxes tests","Uncheck checkbox 2","0","0","1","0","0"
